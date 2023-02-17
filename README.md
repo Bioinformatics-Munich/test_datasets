@@ -1,36 +1,26 @@
+# test-datasets: `igfinder`
 Test data to be used for automated testing with the Bioinformatics-Munich pipelines
 
-> ⚠️ **Do not merge your test data to `master`! Each pipeline has a dedicated branch**
+This branch contains test data for the [Bioinformatics-Munich/igfinder](https://github.com/Bioinformatics-Munich/igfinder) pipeline.
 
-## Introduction
+## Content of this repository
 
-This repository contains various files for CI and unit testing of Bioinformatics-Munich pipelines and infrastructure and is built based on principles and contents from [nf-core](https://github.com/nf-core/test-datasets).
+`design.csv`: Experiment design file for minimal test dataset  
+`design_full.csv`: Experiment design file for full test dataset  
+`testdata/` : Sub-sampled FastQ files sub-sampled
 
-The principle for test data is as small as possible, as large as necessary.
+## Full test dataset origin
 
-## Documentation
+The data was obtained from the [publication describing igfinder](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0165473). To produce the test dataset, the original full dataset was processed using the [igfinder workflow](https://github.com/Bioinformatics-Munich/igfinder). The fasta sequences of the identified Ig chains were then used as reference genome to align the full fastq files and detect the reads that map into the chains. The mapping alignments were then back converted to the fastq files provided for the small test set.
 
-Bioinformatics-Munich/test-datasets comes with documentation in the `docs/` directory, based on the one from [nf-core](https://github.com/nf-core/test-datasets/tree/master/docs):
+### Expression data of mouse-rat synkaryon
 
-01. [Use an existing test dataset](https://github.com/Bioinformatics-Munich/test-datasets/blob/master/docs/USE_EXISTING_DATA.md)
+[Pubmed](https://pubmed.ncbi.nlm.nih.gov/27788226/), [DDBJ](https://ddbj.nig.ac.jp/resource/sra-submission/DRA004264)
 
-## Downloading test data
+#### Sample information
 
-Due the potentially large number of large files in this repository for each pipeline, we highly recommend cloning only the branches you would use.
+| SRA ID    | SAMPLE NAME    |
+|-----------|----------------|
+| DRX045876 | Brg1-hybridoma |
+| DRX045877 | Chd2-hybridoma |
 
-```bash
-git clone <url> --single-branch --branch <pipeline/modules/branch_name>
-```
-
-To subsequently clone other branches[^1]
-
-```bash
-git remote set-branches --add origin [remote-branch]
-git fetch
-```
-
-## Support
-
-For further information or help, don't hesitate to get in touch with us.
-
-[^1]: From [stackoverflow](https://stackoverflow.com/a/60846265/11502856)
